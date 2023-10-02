@@ -11,7 +11,7 @@ export class CreateUserController implements ICreateUserController {
   ) {}
 
   @Post()
-  async handle(@Body() { name, email, password, age, city }: CreateUserDTO) {
-    return this.createUserService.execute({ name, email, password, age, city });
+  async handle(@Body() createUserDTO: CreateUserDTO) {
+    return this.createUserService.execute(createUserDTO);
   }
 }
