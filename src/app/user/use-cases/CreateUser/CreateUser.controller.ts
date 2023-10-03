@@ -1,7 +1,8 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common';
-import { ICreateUserController } from '../../interfaces/ICreateUserController';
-import { ICreateUserService } from '../../interfaces/ICreateUserService';
+import { ICreateUserController } from '../../interfaces/ICreateUser/ICreateUserController';
+import { ICreateUserService } from '../../interfaces/ICreateUser/ICreateUserService';
 import { CreateUserDTO } from '../../dto/CreateUserDTO';
+import { IUser } from '../../interfaces/IUser';
 
 @Controller()
 export class CreateUserController implements ICreateUserController {
@@ -11,7 +12,7 @@ export class CreateUserController implements ICreateUserController {
   ) {}
 
   @Post()
-  async handle(@Body() createUserDTO: CreateUserDTO) {
+  async handle(@Body() createUserDTO: CreateUserDTO): Promise<IUser> {
     return this.createUserService.execute(createUserDTO);
   }
 }

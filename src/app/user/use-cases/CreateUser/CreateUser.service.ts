@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { ICreateUserService } from '../../interfaces/ICreateUserService';
+import { ICreateUserService } from '../../interfaces/ICreateUser/ICreateUserService';
 import { CreateUserDTO } from '../../dto/CreateUserDTO';
 import { User } from '../../entity/User';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { IUser } from '../../interfaces/IUser';
 
 @Injectable()
 export class CreateUserService implements ICreateUserService {
@@ -17,7 +18,7 @@ export class CreateUserService implements ICreateUserService {
     password,
     age,
     city,
-  }: CreateUserDTO): Promise<User> {
+  }: CreateUserDTO): Promise<IUser> {
     const user = this.userRepository.create({
       name,
       email,
@@ -27,7 +28,6 @@ export class CreateUserService implements ICreateUserService {
       created_at: new Date(),
     });
 
-    // Regra de negocio
     return this.userRepository.save(user);
   }
 }
