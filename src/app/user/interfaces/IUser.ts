@@ -5,5 +5,6 @@ export interface IUser {
   password: string;
   city: string;
   age: number;
-  created_at: Date;
+  createdAt: string;
+  updatedAt: string;
 }

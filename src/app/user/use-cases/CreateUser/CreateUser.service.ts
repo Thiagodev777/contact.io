@@ -25,7 +25,6 @@ export class CreateUserService implements ICreateUserService {
       password,
       age,
       city,
-      created_at: new Date(),
     });
 
     return this.userRepository.save(user);

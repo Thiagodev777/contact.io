@@ -1,9 +1,17 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BeforeInsert,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { IUser } from '../interfaces/IUser';
+import { hashSync } from 'bcrypt';
 
 @Entity({ name: 'users' })
 export class User implements IUser {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @Column()
@@ -21,6 +29,14 @@ export class User implements IUser {
   @Column()
   age: number;
 
-  @Column()
-  created_at: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: string;
+
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: string;
+
+  @BeforeInsert()
+  hashPassword() {
+    this.password = hashSync(this.password, 10);
+  }
 }
