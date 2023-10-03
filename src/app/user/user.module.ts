@@ -5,10 +5,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entity/User';
 import { ListUsersService } from './use-cases/ListUsers/ListUsers.service';
 import { ListUsersController } from './use-cases/ListUsers/ListUsers.controller';
+import { ListUserEmailService } from './use-cases/ListUserEmail/ListUserEmail.service';
+import { ListUserEmailController } from './use-cases/ListUserEmail/ListUserEmail.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
-  controllers: [CreateUserController, ListUsersController],
+  controllers: [
+    CreateUserController,
+    ListUsersController,
+    ListUserEmailController,
+  ],
   providers: [
     {
       provide: 'ICreateUserService',
@@ -18,6 +24,8 @@ import { ListUsersController } from './use-cases/ListUsers/ListUsers.controller'
       provide: 'IListUsersService',
       useClass: ListUsersService,
     },
+    ListUserEmailService,
   ],
+  exports: [ListUserEmailService],
 })
 export class UserModule {}
