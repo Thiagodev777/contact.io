@@ -41,3 +41,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker Images
+        uses: docker/build-push-action@v3.2.0
+        with:
+          context: .
+          push: true
+          tags: |
+            antonio80n/contact.io:v1
+            antonio80n/contact.io:latest
+          
