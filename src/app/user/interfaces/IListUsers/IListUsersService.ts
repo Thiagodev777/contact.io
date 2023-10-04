@@ -1,4 +1,4 @@
-import { IUser } from '../IUser';
+import { IUser } from '../../entity/IUser';
 
 export interface IListUsersService {
   execute: () => Promise<IUser[]>;

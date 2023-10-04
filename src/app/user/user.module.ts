@@ -24,8 +24,11 @@ import { ListUserEmailController } from './use-cases/ListUserEmail/ListUserEmail
       provide: 'IListUsersService',
       useClass: ListUsersService,
     },
-    ListUserEmailService,
+    {
+      provide: 'IListUserEmailService',
+      useClass: ListUserEmailService,
+    },
   ],
-  exports: [ListUserEmailService],
+  exports: ['IListUserEmailService'],
 })
 export class UserModule {}

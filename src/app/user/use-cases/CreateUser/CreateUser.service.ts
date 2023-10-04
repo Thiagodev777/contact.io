@@ -4,7 +4,7 @@ import { CreateUserDTO } from '../../dto/CreateUserDTO';
 import { User } from '../../entity/User';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { IUser } from '../../interfaces/IUser';
+import { IUser } from '../../entity/IUser';
 
 @Injectable()
 export class CreateUserService implements ICreateUserService {

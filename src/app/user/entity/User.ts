@@ -6,7 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { IUser } from '../interfaces/IUser';
+import { IUser } from './IUser';
 import { hashSync } from 'bcrypt';
 
 @Entity({ name: 'users' })

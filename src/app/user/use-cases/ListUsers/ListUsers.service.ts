@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IUser } from '../../interfaces/IUser';
+import { IUser } from '../../entity/IUser';
 import { Repository } from 'typeorm';
 import { User } from '../../entity/User';
 import { IListUsersService } from '../../interfaces/IListUsers/IListUsersService';

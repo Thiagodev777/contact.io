@@ -1,12 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { compareSync } from 'bcrypt';
-import { ListUserEmailService } from 'src/app/user/use-cases/ListUserEmail/ListUserEmail.service';
+import { IListUserEmailService } from 'src/app/user/interfaces/IListUserEmail/IListUserEmailService';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly listUserEmailService: ListUserEmailService,
+    @Inject('IListUserEmailService')
+    private readonly listUserEmailService: IListUserEmailService,
     private readonly jwtService: JwtService,
   ) {}
 
