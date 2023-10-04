@@ -48,5 +48,5 @@ jobs:
           context: .
           push: true
           tags: |
-            antonio80n/contact.io:$GITHUB_SHA
+            antonio80n/contact.io:latest
           
