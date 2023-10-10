@@ -1,12 +1,9 @@
-import { Body, Controller, Inject, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { ICreateUserController } from '../../interfaces/ICreateUser/ICreateUserController';
 import { ICreateUserService } from '../../interfaces/ICreateUser/ICreateUserService';
 import { CreateUserDTO } from '../../dto/CreateUserDTO';
 import { IUser } from '../../entity/IUser';
-import { AuthGuard } from '@nestjs/passport';
-
 @Controller()
-@UseGuards(AuthGuard('jwt'))
 export class CreateUserController implements ICreateUserController {
   constructor(
     @Inject('ICreateUserService')
