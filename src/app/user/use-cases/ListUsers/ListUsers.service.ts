@@ -8,10 +8,21 @@ import { IListUsersService } from '../../interfaces/IListUsers/IListUsersService
 @Injectable()
 export class ListUsersService implements IListUsersService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
-  execute(): Promise<IUser[]> {
-    return this.userRepository.find();
+  execute(): Promise<Partial<IUser[]>> {
+    return this.userRepository.find({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        city: true,
+        age: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+      order: { name: 'ASC' },
+    });
   }
 }
