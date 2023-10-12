@@ -1,5 +1,5 @@
 import { IUser } from '../../entity/IUser';
 
 export interface IListUserEmailController {
-  handle: (email: string) => Promise<IUser>;
+  handle: (email: string) => Promise<Partial<IUser>>;
 }

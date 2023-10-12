@@ -8,10 +8,13 @@ import { IListUserEmailService } from '../../interfaces/IListUserEmail/IListUser
 @Injectable()
 export class ListUserEmailService implements IListUserEmailService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
-  async execute(email: string): Promise<IUser | null> {
-    return this.userRepository.findOne({ where: { email } });
+  async execute(email: string): Promise<Partial<IUser> | null> {
+    return this.userRepository.findOne({
+      select: { id: true, email: true, password: true },
+      where: { email },
+    });
   }
 }

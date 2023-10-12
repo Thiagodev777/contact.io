@@ -1,6 +1,6 @@
 {
   "name": "contact.io",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Gerencie seus contatos de maneira simplificada.",
   "author": "Antonio Thiago",
   "private": true,
@@ -23,6 +23,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^10.1.1",
+    "@nestjs/mapped-types": "^2.0.2",
     "@nestjs/passport": "^10.0.2",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^10.0.0",
